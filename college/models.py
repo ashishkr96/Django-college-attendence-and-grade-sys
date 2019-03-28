@@ -77,7 +77,6 @@ class Assignments(models.Model):
     title = models.CharField(max_length=160, null=False, blank=False)
     assignment = models.FileField(upload_to='assignments/')
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now)
     deadline = models.TextField(max_length=14)
 
     def __str__(self):
