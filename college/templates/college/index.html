@@ -27,6 +27,7 @@
             <div class="container ml-3  p-3">
                 <h6>File - {{ assign }}</h6>
                 <h6>Professor - {{ assign.professor.name.first_name }} {{ assign.professor.name.last_name }}</h6>
+                <h6>Assignment added on - {{ assign.date.date }}</h6>
                 <h6>Submission Date - {{ assign.deadline }}</h6>
                 <a type="button" href="{{ assign.assignment.url }}" class="btn-sm btn-success">Download
                 </a>
