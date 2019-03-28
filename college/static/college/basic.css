@@ -1,0 +1,284 @@
+
+body {
+    background: url("1496123965FB_IMG_1495358397826.jpg") no-repeat fixed;
+    background-size: 1400px;
+}
+
+
+.navbar-brand img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.dmenu {
+    color: black;
+
+
+}
+
+
+
+.dlist {
+    padding: 10px;
+    border-bottom: 1px solid lavender;
+}
+
+.dstyle {
+    padding-right: 65px;
+    transition-delay: 3s;
+}
+
+.dmenustyle {
+    padding: 7px;
+    background: honeydew;
+
+}
+
+.table-class {
+
+    background: whitesmoke;
+    width: 700px;
+    margin-left: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.table-avg {
+    background: whitesmoke;
+    position: relative;
+    width: 570px;
+    float: left;
+    transform: translateY(0px) translateX(370px);
+    box-shadow: 5px 5px 5px black;
+}
+
+.s-info {
+
+    position: relative;
+    border-radius: 2px;
+    width: 700px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-left: 300px;
+    background: whitesmoke;
+    box-shadow: 5px 5px 5px black;
+
+
+}
+
+.logout {
+    border: 1px solid black;
+    background: whitesmoke;
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    transform: translateX(450px) translateY(100px);
+    box-shadow: 5px 5px 5px black;
+}
+
+.login-f, .student-reg, .student-add {
+    border: 2px solid whitesmoke;
+    padding: 5px;
+    background: whitesmoke;
+    box-shadow: 5px 5px 5px black;
+}
+
+.login-f {
+    width: 400px;
+    margin: 100px 400px;
+    border-radius: 5px;
+}
+
+.student-reg {
+    width: 600px;
+    margin-top: 10px;
+    margin-left: 400px;
+    box-shadow: 5px 5px 5px 5px black;
+    padding: 20px;
+}
+
+.student-legend {
+    margin-top: 20px;
+    border-bottom: 2px solid paleturquoise;
+}
+
+#butt {
+    margin-top: 10px;
+}
+
+.student-add {
+    width: 500px;
+    margin-top: 50px;
+    margin-left: 350px;
+    text-align: justify-all;
+
+}
+
+.p-info {
+    background: whitesmoke;
+    width: 500px;
+    border: 1px solid whitesmoke;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+
+.professor-rate {
+    border-bottom: 2px solid black;
+    padding: 5px;
+
+    text-align: center;
+
+}
+
+.p-info p {
+    font-family: "Courier New", Courier, monospace;
+    text-align-all: justify;
+    color: crimson;
+
+}
+
+
+.assignment-disp {
+    margin-top: 10px;
+    width: 500px;
+    margin-left: 350px;
+    border: 2px solid whitesmoke;
+    background: whitesmoke;
+    box-shadow: 5px 5px 5px black;
+
+}
+
+
+@media only screen and (max-width: 1100px) {
+
+
+    body {
+        background: url("1496123965FB_IMG_1495358397826.jpg") no-repeat fixed;
+        background-size: 1200px;
+    }
+
+
+    .navbar-brand img {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+
+    .table-class {
+        background: whitesmoke;
+        width: 300px;
+        margin-left: 30px;
+        margin-top: 10px;
+        padding: 10px;
+        box-shadow: 5px 5px 5px black;
+    }
+
+    .table-avg {
+        background: whitesmoke;
+        position: relative;
+        width: 300px;
+        transform: translateY(0px) translateX(30px);
+        box-shadow: 5px 5px 5px black;
+    }
+
+    .s-info {
+
+        position: relative;
+        border-radius: 2px;
+        width: 300px;
+        padding: 5px;
+        margin-top: 10px;
+        margin-left: 25px;
+        background: whitesmoke;
+        box-shadow: 5px 5px 5px black;
+
+
+    }
+
+    .logout {
+        border: 1px solid black;
+        background: whitesmoke;
+        width: 200px;
+        border-radius: 5px;
+        padding: 5px;
+        transform: translateX(50px) translateY(30px);
+        box-shadow: 5px 5px 5px black;
+    }
+
+    .login-f, .student-reg, .student-add {
+        border: 2px solid whitesmoke;
+        padding: 5px;
+        background: whitesmoke;
+        box-shadow: 5px 5px 5px black;
+    }
+
+    .student-reg {
+        width: 350px;
+        height: auto;
+        margin-top: 5px;
+        margin-left: 5px;
+        box-shadow: 5px 5px 5px 5px black;
+        padding: 5px;
+    }
+
+    .student-legend {
+        border-bottom: 2px solid black;
+    }
+
+    #butt {
+        margin-top: 5px;
+    }
+
+    .student-add {
+        width: 300px;
+        margin-top: 30px;
+        margin-left: 10px;
+        text-align: justify-all;
+
+    }
+
+    .p-info {
+        background: whitesmoke;
+        width: 340px;
+        margin-left: 5px;
+        margin-top: 5px;
+        padding: 5px;
+        border: 1px solid whitesmoke;
+        box-shadow: 5px 5px 5px 5px black;
+    }
+
+
+    .professor-rate {
+        border-bottom: 2px solid black;
+        padding: 2px;
+        text-align: center;
+
+    }
+
+    .p-info p {
+        font-family: "Courier New", Courier, monospace;
+        text-align-all: justify;
+        color: crimson;
+
+    }
+
+
+    .assignment-disp {
+        margin-top: 10px;
+        width: 300px;
+        margin-left: 20px;
+        border: 2px solid whitesmoke;
+        background: whitesmoke;
+        box-shadow: 5px 5px 5px black;
+
+    }
+
+    .login-f {
+        width: 300px;
+        margin: 10px 20px;
+    }
+
+
+}

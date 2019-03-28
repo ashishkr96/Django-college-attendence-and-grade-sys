@@ -1,0 +1,36 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+
+    <div class="student-reg ">
+        <legend class="professor-rate">This will permanently delete all your student's subject marks and attendence
+        </legend>
+        <form method="post" action="{% url 'reset-record' %}">
+            {% csrf_token %}
+            <h6>Are you sure you want to proceed ?</h6>
+            <button type="submit" class="btn btn-outline-danger mt-2">Delete</button>
+            <a href="{% url 'professor-page' %}" class="btn btn-outline-info mt-2">Cancel</a>
+        </form>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="student-reg">
+
+        <legend class="student-legend">Semeseter Subject and Professor</legend>
+
+
+        <table class="table table-bordered table-responsive-sm">
+            <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Professor</th>
+                <th>E-mail</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for subject in subjects %}
+                <tr>
+
+
+                    <td>
+
+
+                        <h6>{{ subject.subject.subject }}</h6>
+
+
+                    </td>
+                    {% if subject.professor %}
+                        <td>
+                            <h6>{{ subject.professor.name.first_name }} {{ subject.professor.name.last_name }}</h6>
+                        </td>
+                    {% else %}
+                        <td>
+                            <h6>Not Alloted</h6>
+                        </td>
+
+                    {% endif %}
+                    {% if subject.professor.name.email %}
+                        <td>
+                            <h6>{{ subject.professor.name.email }}</h6>
+                        </td>
+                    {% else %}
+                        <td>
+                            <h6>Not mentioned</h6>
+                        </td>
+
+                    {% endif %}
+
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

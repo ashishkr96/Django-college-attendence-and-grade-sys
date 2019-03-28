@@ -1,0 +1,38 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="reg-form">
+        <form action="{% url 'bulk-add' %}" method="post">
+            {% csrf_token %}
+            <div class="student-add ">
+                <legend class="student-legend">Batch marks creation form</legend>
+                <label>Batch : <input type="text" name='batch'
+                                      placeholder="eg: - 2017" autocomplete="off"></label><br>
+                <label>Subject : <input type="text" name='sub' placeholder="Enter subject name here" autocomplete="off"></label><br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}
