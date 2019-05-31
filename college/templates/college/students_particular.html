@@ -59,7 +59,7 @@
 
                             <td>{{ s.student.name.first_name }} {{ s.student.name.last_name }}</td>
                             <td>{{ s.student.usn }}</td>
-                            <td><a class="btn btn-success" href="{% url 'edit-student' s.id %}">Update</a>
+                            <td><a class="btn btn-success" href="{% url 'update-student' s.id %}">Update</a>
                             <td><a class="btn btn-danger" href="{% url 'delete-student' s.id %}">Delete</a>
                             <td><a class="btn btn-primary" href="{% url 'send-sms' s.id %}">SMS</a>
                             </td>
