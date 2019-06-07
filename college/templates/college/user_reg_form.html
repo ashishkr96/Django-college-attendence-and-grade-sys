@@ -1,0 +1,34 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="student-reg">
+        <form action="{% url 'student-reg' %}" method="post">
+            <legend class="mb-2 ">Student Registeration</legend>
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ sform|crispy }}
+            <button class="btn btn-outline-primary" id="butt" type="submit">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

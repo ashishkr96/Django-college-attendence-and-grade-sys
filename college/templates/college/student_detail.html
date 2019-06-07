@@ -1,0 +1,90 @@
+{% extends 'college/base.html' %}
+
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="s-info">
+        <h6 class="p-1">Name
+            - {{ s.name.first_name }} {{ s.name.last_name }}</h6>
+        <h6 class="p-1"> USN - {{ s.usn }}</h6>
+        <h6 class="p-1"> Sem - {{ s.sem }}</h6><br>
+    </div>
+
+
+
+        <table class="table table-bordered table-responsive-sm table-class">
+            <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Total Marks</th>
+                <th>1IA</th>
+                <th>2IA</th>
+                <th>3IA</th>
+                <th>Classes Attended</th>
+                <th>Total Classes</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for subject in students %}
+                <tr>
+
+                    <td>{{ subject.subject.subject }}</td>
+                    <td>{{ subject.subject.subject.total_marks }}</td>
+                    <td>{{ subject.I }}</td>
+                    <td>{{ subject.II }}</td>
+                    <td>{{ subject.III }}</td>
+                    <td>{{ subject.attendence }}</td>
+                    <td>{{ subject.subject.subject.total_classes }}</td>
+
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <table class="table table-bordered table-responsive table-avg">
+            <thead>
+            <tr>
+                <th>Subjects</th>
+                {% for subject in students %}
+
+                    <th>{{ subject.subject.subject }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td><h6>Internal Avg</h6></td>
+                {% for a in avg %}
+                    <td>{{ a }}</td>
+                {% endfor %}
+            </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+{% endblock %}

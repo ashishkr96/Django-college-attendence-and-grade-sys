@@ -1,0 +1,157 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'college/basic.css' %}">
+
+
+    <title>H.M.S.I.T(CSE)</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-sm-12">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark naving">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'college/1486471174c.jpg' %}" width="30" height="30"
+                     class="d-inline-block align-top"
+                     alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        {% if user.is_staff %}
+                            <a class="nav-link" href="{% url 'assignment-add' %}">Add Assignment</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if user.is_staff %}
+                            <a class="nav-link" href="{% url 'reset-confirmation' %}">Trash record</a>
+                        {% endif %}
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+
+
+                        </li>
+
+                        <li>
+                            {% if user.is_staff %}
+                                <a class="nav-link" href="{% url 'professor-page' %}">Student Record</a>
+                            {% else %}
+                                <a class="nav-link" href="{% url 'student-detail' %}">My Results</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if user.is_staff %}
+                                <a class="nav-link addbutton" href="{% url 'student-add' %}">Add Individual Student</a>
+                            {% else %}
+                                <a class="nav-link" href="{% url 'professor-review' %}">Review Professor</a>
+                            {% endif %}
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">LogIn</a>
+
+                        </li>
+
+
+                    {% endif %}
+
+
+                </ul>
+                {% if user.is_staff %}
+                    <div class="dropdown dstyle">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            More
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu dmenustyle">
+
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'bulk-add' %}">Create Marks</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'create-batch' %}">Create Batch</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'batch-list' %}">Batches</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'add-student-batch' %}">Add students to batch</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'student-reg' %}">Student Reg</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'semester-list' %}">Semesters</a>
+                                {% endif %}
+                            </li>
+                            <li class="dlist">
+                                {% if user.is_staff %}
+                                    <a class="dmenu" href="{% url 'update-process' %}">Update batch details</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </nav>
+
+
+
+        {% block content %}
+        {% endblock %}
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+                integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+                integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+                crossorigin="anonymous"></script>
+    </div>
+
+</div>
+</body>
+</html>

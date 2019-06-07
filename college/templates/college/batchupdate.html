@@ -1,0 +1,37 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'update-batch' %}" method="post">
+        {% csrf_token %}
+        <div class="student-add ">
+            <legend class="student-legend">Update sem for entire batch</legend>
+            <label>Batch : <input type="text" name='batch' placeholder="eg:- 2017"></label><br>
+            <label>Update Sem To : <input type="text" name='sem' placeholder="eg:- 1"></label><br>
+            <button class="btn btn-primary" type="submit">Update</button>
+        </div>
+
+    </form>
+
+
+{% endblock %}

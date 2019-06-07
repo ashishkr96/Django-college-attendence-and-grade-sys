@@ -1,0 +1,56 @@
+{% extends 'college/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="student-reg">
+
+        <legend class="student-legend">List of all students in batch {{ students.first.batch.batch_name }}</legend>
+
+        <table class="table table-bordered table-responsive-sm">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>USN</th>
+                <th>Update details</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+
+                    <td><h6>{{ student.student.name.first_name }}</h6></td>
+                    <td><h6>{{ student.student.name.last_name }}</h6></td>
+                    <td><h6>{{ student.student.usn }}</h6></td>
+                    <td><a class="btn btn-outline-info" href="{% url 'update-student' student.student.id %}">Update</a>
+                    </td>
+                    <td><a class="btn btn-outline-danger" href="{% url 'student-delete-batch' student.id %}">Delete</a></td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

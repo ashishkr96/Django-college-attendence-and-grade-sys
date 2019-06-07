@@ -1,0 +1,88 @@
+{% extends 'college/base.html' %}
+
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="p-info">
+        <h6>Hi {{ user.first_name }} {{ user.last_name }} </h6>
+        <h6>Last login time : {{ user.last_login }} </h6>
+        <h6>Subjects that you have taken this semester :-</h6>
+        {% for p in prof %}
+            <strong>{{ p.subject.subject }}-{{ p.semester.semester }} Sem |</strong>
+        {% endfor %}
+        <p>Hint1 - You can add new student by
+            clicking on
+            create student on navigation bar.
+        </p>
+        <p>Hint2- Search students by their USN number using search bar provided </p>
+
+
+    </div>
+
+
+    {% for student in students %}
+        {% if student %}
+            <div class="student-add">
+                <legend class="professor-rate">Students for subject - {{ student.first.subject.subject }}</legend>
+                <table class="table table-bordered table-responsive-sm">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>USN</th>
+                        <th>Update Marks</th>
+                        <th>Delete Marks</th>
+                        <th>Send SMS</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in student %}
+                        <tr>
+
+                            <td>{{ s.student.name.first_name }} {{ s.student.name.last_name }}</td>
+                            <td>{{ s.student.usn }}</td>
+                            <td><a class="btn btn-success" href="{% url 'update-student' s.id %}">Update</a>
+                            <td><a class="btn btn-danger" href="{% url 'delete-student' s.id %}">Delete</a>
+                            <td><a class="btn btn-primary" href="{% url 'send-sms' s.id %}">SMS</a>
+                            </td>
+
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+
+
+
+
+
+        {% endif %}
+
+
+
+    {% endfor %}
+
+
+
+{% endblock %}

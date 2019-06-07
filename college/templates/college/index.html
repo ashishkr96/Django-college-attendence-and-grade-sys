@@ -1,0 +1,47 @@
+{% extends 'college/base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <div class="alert alert-danger">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% else %}
+                <div class="alert alert-{{ message.tags }} ">  <!-- singular -->
+                    <a class="close" data-dismiss="alert">×</a>
+                    {{ message|safe }}
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+    {% endif %}
+
+    {% for assign in a %}
+        <div class="assignment-disp mb-4">
+            <legend class="professor-rate ">{{ assign.title }}</legend>
+            <div class="container ml-3  p-3">
+                <h6>File - {{ assign }}</h6>
+                <h6>Professor - {{ assign.professor.name.first_name }} {{ assign.professor.name.last_name }}</h6>
+                <h6>Assignment added on - {{ assign.date.date }}</h6>
+                <h6>Submission Date - {{ assign.deadline }}</h6>
+                <a type="button" href="{{ assign.assignment.url }}" class="btn-sm btn-success">Download
+                </a>
+                {% if request.user == assign.professor.name %}
+                    <a type="button" href="{% url 'delete-assignment' assign.id %}" class="btn-sm btn-danger">Delete
+                    </a>
+                {% endif %}
+
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}
