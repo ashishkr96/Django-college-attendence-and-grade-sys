@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o*hs0&po1usido!2w#@nkji#0**oh1rid+%-kn%@z1zn3#i2@+'
+SECRET_KEY = '#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -119,6 +119,6 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-WAY2SMS_API_KEY = '9RPQ6MNJZ857L317GM40UD3FF4EU48ZU'
-WAY2SMS_SECRET = 'J6NYA705GI2OJD3X'
+WAY2SMS_API_KEY = '#'
+WAY2SMS_SECRET = '#'
 django_heroku.settings(locals())
